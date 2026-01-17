@@ -1,8 +1,9 @@
 const https = require("https");
 
 const BASE_URL = "https://echo-serv.tbxnet.com/v1/secret";
+const BEARER = process.env.BEARER || "";
 const AUTH_HEADER = {
-  Authorization: "Bearer aSuperSecretKey",
+  Authorization: `Bearer ${BEARER}`,
 };
 
 function request(path) {
