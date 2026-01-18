@@ -278,9 +278,7 @@ La aplicación maneja automáticamente:
 
 ## 🔐 Seguridad
 
-- Bearer token obligatorio para API externa
 - CORS restringido a orígenes configurados
-- Variables sensibles en `.env` (nunca comitear)
 - Validación de entrada en CSV
 
 ---
