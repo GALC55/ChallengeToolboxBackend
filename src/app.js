@@ -7,8 +7,11 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 
+// Logger de requests
+app.use(requestLogger);
+
 //middleware de CORS configurado segun entorno
-const NODE_ENV = process.env.NODE_ENV || "production";
+const NODE_ENV = process.env.NODE_ENV || "development";
 const LOCAL_FRONTEND_URL =
   process.env.LOCAL_FRONTEND_URL || "http://localhost:3000";
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
@@ -36,7 +39,7 @@ if (NODE_ENV === "development") {
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true);
-      return callback(null, false);
+      return callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: [
@@ -50,18 +53,16 @@ if (NODE_ENV === "development") {
   };
   app.use(cors(corsOptions));
 }
-// Logger de requests
-app.use(requestLogger);
-
-//handler de errors
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ message: "Internal server error" });
-});
 
 // rutas
 app.use("/", healthRoutes);
 
 app.use("/files", filesRoutes);
+
+//handler de errores
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: "Internal server error" });
+});
 
 module.exports = app;

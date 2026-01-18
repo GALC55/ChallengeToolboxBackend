@@ -22,7 +22,7 @@ async function getFilesData(req, res) {
           });
         }
       } catch (err) {
-        // Se ignora si ocurre un error al obtener o parsear el archivo
+        console.log(`Error processing file ${file}:`, err.message);
       }
     }
 
@@ -33,6 +33,7 @@ async function getFilesData(req, res) {
     }
     res.json(response);
   } catch (error) {
+    console.error("Error in getFilesData:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 }
@@ -43,6 +44,7 @@ async function getFilesList(req, res) {
     const files = await getFiles();
     res.json(files);
   } catch (error) {
+    console.error("Error in getFilesList:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 }

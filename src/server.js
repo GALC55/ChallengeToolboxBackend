@@ -1,9 +1,5 @@
 // Load environment variables from .env (development). Requires `dotenv`.
-try {
-  require("dotenv").config();
-} catch (e) {
-  // dotenv not installed or failed to load; continue without crashing
-}
+require("dotenv").config();
 
 const app = require("./app");
 

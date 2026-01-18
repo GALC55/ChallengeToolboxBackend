@@ -1,7 +1,13 @@
 const https = require("https");
 
-const BASE_URL = "https://echo-serv.tbxnet.com/v1/secret";
+const BASE_URL = process.env.API_URL || "";
 const BEARER = process.env.BEARER || "";
+
+// Validar configuración
+if (!BASE_URL) {
+  console.warn("Warning: API_URL is not configured in environment variables");
+}
+
 const AUTH_HEADER = {
   Authorization: `Bearer ${BEARER}`,
 };
