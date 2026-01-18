@@ -30,8 +30,8 @@ Este backend proporciona una API REST para:
 ### Verificar versiones
 
 ```bash
-node -v
-npm -v
+node -v v14+
+npm -v v6+
 ```
 
 ---
