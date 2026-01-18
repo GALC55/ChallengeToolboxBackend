@@ -89,7 +89,7 @@ API_URL=<your_api_url>
 | `NODE_ENV`           | Entorno de ejecución          | `development` o `production` |
 | `PORT`               | Puerto del servidor           | `3000`                       |
 | `API_URL`            | URL base de la API externa    | `<your_api_url>`             |
-| `BEARER`             | Token de autenticación        | `<your_secret_key>`          |
+| `BEARER`             | Auth Token de la API EXTERNA  | `<your_secret_key>`          |
 | `ALLOWED_ORIGINS`    | Orígenes permitidos para CORS | URLs separadas por coma      |
 | `LOCAL_FRONTEND_URL` | URL del frontend local        | `http://localhost:3001`      |
 
