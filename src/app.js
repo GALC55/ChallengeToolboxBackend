@@ -13,7 +13,7 @@ app.use(requestLogger);
 //middleware de CORS configurado segun entorno
 const NODE_ENV = process.env.NODE_ENV || "development";
 const LOCAL_FRONTEND_URL =
-  process.env.LOCAL_FRONTEND_URL || "http://localhost:3000";
+  process.env.LOCAL_FRONTEND_URL || "http://localhost:3001";
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
   .split(",")
   .map((s) => s.trim())
