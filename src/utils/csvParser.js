@@ -8,8 +8,14 @@ function parseCSV(content) {
 
     const [file, text, number, hex] = line.split(",");
 
+    // Validar que todos los campos estén presentes
     if (!file || !text || !number || !hex) continue;
+
+    // Validar que number sea numérico
     if (isNaN(Number(number))) continue;
+
+    // Validar que hex sea un hexadecimal válido de 32 caracteres
+    if (!/^[0-9a-fA-F]{32}$/.test(hex)) continue;
 
     result.push({
       text,
